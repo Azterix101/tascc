@@ -1,0 +1,34 @@
+@startuml
+skinparam backgroundColor #EEEBDC
+skinparam handwritten true
+
+title Tassc Task Management Application Architecture
+
+actor User
+
+package "Client (React)" {
+  [Browser]
+}
+
+package "Server (Node.js + Express)" {
+  [Authentication Controller]
+  [User Controller]
+  [Task Controller]
+}
+
+package "Database (MongoDB)" {
+  [User Collection]
+  [Task Collection]
+}
+
+User -> Browser : Interacts
+
+Browser -> "Authentication Controller" : User Registration / Login\n(POST /api/auth/register)\n(POST /api/auth/login)
+Browser -> "User Controller" : Change Password / Email\n(POST /api/user/change-password)\n(POST /api/user/change-email)
+Browser -> "Task Controller" : CRUD Operations\n(POST /api/tasks)\n(GET /api/tasks)\n(PUT /api/tasks/{id})\n(DELETE /api/tasks/{id})
+
+"Authentication Controller" -> "User Collection" : Store / Retrieve User Data
+"User Controller" -> "User Collection" : Update User Data
+"Task Controller" -> "Task Collection" : CRUD Task Data
+
+@enduml
