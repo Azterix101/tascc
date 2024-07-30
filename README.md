@@ -1,8 +1,3 @@
-# tascc
-a task management application.
-
-Sure, I'll provide you with a basic README, API documentation, and a high-level design (HLD) for the project.
-
 ### README
 
 **README.md**
